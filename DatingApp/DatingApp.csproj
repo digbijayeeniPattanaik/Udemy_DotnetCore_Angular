@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20191014211338_InitialCreate.cs" />
+    <Compile Remove="Migrations\20191014211338_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20191026101726_AddUsers.cs" />
+    <Compile Remove="Migrations\20191026101726_AddUsers.Designer.cs" />
+    <Compile Remove="Migrations\20191027123155_UpdateUsers.cs" />
+    <Compile Remove="Migrations\20191027123155_UpdateUsers.Designer.cs" />
+    <Compile Remove="Migrations\20191027123939_SqlInitialCreate.cs" />
+    <Compile Remove="Migrations\20191027123939_SqlInitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20191027124918_SqlInitialCreate2.cs" />
+    <Compile Remove="Migrations\20191027124918_SqlInitialCreate2.Designer.cs" />
+    <Compile Remove="Migrations\20191028073827_SqlInitialCreate3.cs" />
+    <Compile Remove="Migrations\20191028073827_SqlInitialCreate3.Designer.cs" />
+    <Compile Remove="Migrations\20191028074849_SqlInitialCreate4.cs" />
+    <Compile Remove="Migrations\20191028074849_SqlInitialCreate4.Designer.cs" />
+    <Compile Remove="Migrations\20191028074957_SqlInitialCreate5.cs" />
+    <Compile Remove="Migrations\20191028074957_SqlInitialCreate5.Designer.cs" />
+    <Compile Remove="Migrations\20191028075121_SqlInitialCreate6.cs" />
+    <Compile Remove="Migrations\20191028075121_SqlInitialCreate6.Designer.cs" />
+    <Compile Remove="Migrations\DataContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+</Project>
