@@ -24,10 +24,16 @@
     <Compile Remove="Migrations\20191028074957_SqlInitialCreate5.Designer.cs" />
     <Compile Remove="Migrations\20191028075121_SqlInitialCreate6.cs" />
     <Compile Remove="Migrations\20191028075121_SqlInitialCreate6.Designer.cs" />
+    <Compile Remove="Migrations\20191028075403_SqlInitialCreate8.cs" />
+    <Compile Remove="Migrations\20191028075403_SqlInitialCreate8.Designer.cs" />
+    <Compile Remove="Migrations\20191117160815_ExtendedUserClass3.cs" />
+    <Compile Remove="Migrations\20191117160815_ExtendedUserClass3.Designer.cs" />
     <Compile Remove="Migrations\DataContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="CloudinaryDotNet" Version="1.8.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />

@@ -5,12 +5,14 @@ C:\Users\sonur\source\repos\DatingApp\DatingApp\bin\Debug\netcoreapp2.2\DatingAp
 C:\Users\sonur\source\repos\DatingApp\DatingApp\bin\Debug\netcoreapp2.2\DatingApp.runtimeconfig.json
 C:\Users\sonur\source\repos\DatingApp\DatingApp\bin\Debug\netcoreapp2.2\DatingApp.runtimeconfig.dev.json
 C:\Users\sonur\source\repos\DatingApp\DatingApp\bin\Debug\netcoreapp2.2\DatingApp.dll
+C:\Users\sonur\source\repos\DatingApp\DatingApp\bin\Debug\netcoreapp2.2\DatingApp.pdb
 C:\Users\sonur\source\repos\DatingApp\DatingApp\obj\Debug\netcoreapp2.2\DatingApp.RazorAssemblyInfo.cache
 C:\Users\sonur\source\repos\DatingApp\DatingApp\obj\Debug\netcoreapp2.2\DatingApp.RazorAssemblyInfo.cs
 C:\Users\sonur\source\repos\DatingApp\DatingApp\obj\Debug\netcoreapp2.2\DatingApp.AssemblyInfoInputs.cache
 C:\Users\sonur\source\repos\DatingApp\DatingApp\obj\Debug\netcoreapp2.2\DatingApp.AssemblyInfo.cs
 C:\Users\sonur\source\repos\DatingApp\DatingApp\obj\Debug\netcoreapp2.2\DatingApp.RazorTargetAssemblyInfo.cache
-C:\Users\sonur\source\repos\DatingApp\DatingApp\bin\Debug\netcoreapp2.2\DatingApp.pdb
 C:\Users\sonur\source\repos\DatingApp\DatingApp\obj\Debug\netcoreapp2.2\DatingApp.dll
 C:\Users\sonur\source\repos\DatingApp\DatingApp\obj\Debug\netcoreapp2.2\DatingApp.pdb
+C:\Users\sonur\source\repos\DatingApp\DatingApp\bin\Debug\netcoreapp2.2\Data\UserSeedData.json
 C:\Users\sonur\source\repos\DatingApp\DatingApp\obj\Debug\netcoreapp2.2\DatingApp.csprojAssemblyReference.cache
+C:\Users\sonur\source\repos\DatingApp\DatingApp\bin\Debug\netcoreapp2.2\Data\MaleSeedData.json

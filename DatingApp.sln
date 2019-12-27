@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatingApp", "DatingApp\DatingApp.csproj", "{03C67728-0D14-42A3-A5FA-F6A15D035390}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatingAPP-SPA-Angular", "DatingAPP-SPA-Angular\DatingAPP-SPA-Angular.csproj", "{CC7C9F14-08C3-4E50-A1EE-ECC7140DF69E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_Angular", "Test_Angular\Test_Angular.csproj", "{134F1414-F1BA-4738-B3C6-49DF243448C9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test3_angular", "Test3_angular\Test3_angular.csproj", "{EA6C6086-A119-4FAB-B161-D10E23597878}"
 EndProject
 Global
@@ -21,14 +17,6 @@ Global
 		{03C67728-0D14-42A3-A5FA-F6A15D035390}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03C67728-0D14-42A3-A5FA-F6A15D035390}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03C67728-0D14-42A3-A5FA-F6A15D035390}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC7C9F14-08C3-4E50-A1EE-ECC7140DF69E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC7C9F14-08C3-4E50-A1EE-ECC7140DF69E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC7C9F14-08C3-4E50-A1EE-ECC7140DF69E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC7C9F14-08C3-4E50-A1EE-ECC7140DF69E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{134F1414-F1BA-4738-B3C6-49DF243448C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{134F1414-F1BA-4738-B3C6-49DF243448C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{134F1414-F1BA-4738-B3C6-49DF243448C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{134F1414-F1BA-4738-B3C6-49DF243448C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA6C6086-A119-4FAB-B161-D10E23597878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EA6C6086-A119-4FAB-B161-D10E23597878}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA6C6086-A119-4FAB-B161-D10E23597878}.Release|Any CPU.ActiveCfg = Release|Any CPU
