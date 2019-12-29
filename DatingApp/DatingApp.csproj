@@ -28,6 +28,8 @@
     <Compile Remove="Migrations\20191028075403_SqlInitialCreate8.Designer.cs" />
     <Compile Remove="Migrations\20191117160815_ExtendedUserClass3.cs" />
     <Compile Remove="Migrations\20191117160815_ExtendedUserClass3.Designer.cs" />
+    <Compile Remove="Migrations\20191216171326_AddedPublicID.cs" />
+    <Compile Remove="Migrations\20191216171326_AddedPublicID.Designer.cs" />
     <Compile Remove="Migrations\DataContextModelSnapshot.cs" />
   </ItemGroup>
 

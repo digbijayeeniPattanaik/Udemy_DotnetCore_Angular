@@ -10,6 +10,7 @@ import { MembersEditComponent } from './members/members-edit/members-edit.compon
 import { MemberListResolver } from './_resolvers/member-lists.resolver'
 import { MemberEditResolver } from './_resolvers/member-edit.resolver'
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard'
+import { ListResolver } from './_resolvers/lists.resolver'
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -24,7 +25,7 @@ export const appRoutes: Routes = [
                 path: 'member/edit', component: MembersEditComponent, resolve: { user: MemberEditResolver }, canDeactivate: [PreventUnsavedChanges]
             },
             { path: 'messages', component: MessagesComponent },
-            { path: 'lists', component: ListsComponent },
+            { path: 'lists', component: ListsComponent, resolve: { users: ListResolver} }
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full' }////wild card. should be at last . Ordering matters for this.

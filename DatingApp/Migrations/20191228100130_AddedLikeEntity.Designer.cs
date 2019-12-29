@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatingApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191117160815_ExtendedUserClass3")]
-    partial class ExtendedUserClass3
+    [Migration("20191228100130_AddedLikeEntity")]
+    partial class AddedLikeEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,19 @@ namespace DatingApp.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("DatingApp.Model.Like", b =>
+                {
+                    b.Property<int>("LikeeId");
+
+                    b.Property<int>("LikerId");
+
+                    b.HasKey("LikeeId", "LikerId");
+
+                    b.HasIndex("LikerId");
+
+                    b.ToTable("Likes");
+                });
 
             modelBuilder.Entity("DatingApp.Model.Photo", b =>
                 {
@@ -32,6 +45,8 @@ namespace DatingApp.Migrations
                     b.Property<string>("Description");
 
                     b.Property<bool>("IsMain");
+
+                    b.Property<string>("PublicId");
 
                     b.Property<string>("Url");
 
@@ -92,6 +107,19 @@ namespace DatingApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Values");
+                });
+
+            modelBuilder.Entity("DatingApp.Model.Like", b =>
+                {
+                    b.HasOne("DatingApp.Model.Users", "Likee")
+                        .WithMany("Likers")
+                        .HasForeignKey("LikeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("DatingApp.Model.Users", "Liker")
+                        .WithMany("Likees")
+                        .HasForeignKey("LikerId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("DatingApp.Model.Photo", b =>

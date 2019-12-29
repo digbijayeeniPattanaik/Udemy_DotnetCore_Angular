@@ -2,6 +2,7 @@
 using DatingApp.Data;
 using DatingApp.Dtos;
 using DatingApp.Helpers;
+using DatingApp.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -37,10 +38,10 @@ namespace DatingApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUsers([FromQuery]UserParams userParams)
         {
-            var currentUserId =  int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var userFromRepo = await _repo.GetUser(currentUserId);
             userParams.UserId = currentUserId;
-            
+
             if (string.IsNullOrEmpty(userParams.Gender))
             {
                 userParams.Gender = userFromRepo.Gender == "male" ? "female" : "male";
@@ -54,7 +55,7 @@ namespace DatingApp.Controllers
             return Ok(usersToReturn);
         }
 
-        [HttpGet("{id}", Name ="GetUser")]
+        [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
@@ -77,5 +78,28 @@ namespace DatingApp.Controllers
             throw new Exception($"Updating user {id} failed on save");
         }
 
+        [HttpPost("{id}/like/{recipientId}")]
+        public async Task<IActionResult> LikeUser(int id, int recipientId)
+        {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var like = await _repo.GetLike(id, recipientId);
+
+            if (like != null)
+                return BadRequest("You already likes this user");
+
+            if (await _repo.GetUser(recipientId) == null)
+                return NotFound();
+
+            like = new Like { LikeeId = recipientId, LikerId = id };
+
+            _repo.Add<Like>(like);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Failed to like the user");
+        }
     }
 }

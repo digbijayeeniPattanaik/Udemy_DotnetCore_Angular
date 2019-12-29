@@ -11,6 +11,7 @@ var members_edit_component_1 = require("./members/members-edit/members-edit.comp
 var member_lists_resolver_1 = require("./_resolvers/member-lists.resolver");
 var member_edit_resolver_1 = require("./_resolvers/member-edit.resolver");
 var prevent_unsaved_changes_guard_1 = require("./_guards/prevent-unsaved-changes.guard");
+var lists_resolver_1 = require("./_resolvers/lists.resolver");
 exports.appRoutes = [
     { path: '', component: home_component_1.HomeComponent },
     {
@@ -24,7 +25,7 @@ exports.appRoutes = [
                 path: 'member/edit', component: members_edit_component_1.MembersEditComponent, resolve: { user: member_edit_resolver_1.MemberEditResolver }, canDeactivate: [prevent_unsaved_changes_guard_1.PreventUnsavedChanges]
             },
             { path: 'messages', component: messages_component_1.MessagesComponent },
-            { path: 'lists', component: lists_component_1.ListsComponent },
+            { path: 'lists', component: lists_component_1.ListsComponent, resolve: { users: lists_resolver_1.ListResolver } }
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full' } ////wild card. should be at last . Ordering matters for this.
