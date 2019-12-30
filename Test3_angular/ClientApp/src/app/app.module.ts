@@ -37,6 +37,8 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimeAgoPipe } from 'time-ago-pipe';
 import { ListResolver } from './_resolvers/lists.resolver';
+import { MessagesResolver } from './_resolvers/messages.resolver';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -65,7 +67,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
         MemberDetailComponent,
         MembersEditComponent,
         PhotoEditorComponent,
-        TimeAgoPipe
+        TimeAgoPipe,
+        MemberMessagesComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -100,6 +103,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
         MemberDetailResolver,
         MemberListResolver,
         MemberEditResolver,
+        MessagesResolver,
         ListResolver,
         PreventUnsavedChanges,
         { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }

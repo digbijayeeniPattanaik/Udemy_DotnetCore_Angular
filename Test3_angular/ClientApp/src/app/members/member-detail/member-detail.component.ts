@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../_models/user';
 import { UserService } from '../../_services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../_alert';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import { TabsetComponent } from 'ngx-bootstrap';
+import { AuthService } from '../../_services/auth.service';
 
 @Component({
     selector: 'app-member-detail',
@@ -14,14 +16,17 @@ export class MemberDetailComponent implements OnInit {
     user: User;
     galleryOptions: NgxGalleryOptions[];
     galleryImages: NgxGalleryImage[];
-
-    constructor(private userService: UserService, private alertify: AlertService, private route: ActivatedRoute) { }
+    @ViewChild('memberTabs', { static: true }) memberTabs: TabsetComponent;
+    constructor(private userService: UserService, private alertify: AlertService, private route: ActivatedRoute, private authService: AuthService) { }
 
     ngOnInit() {
         this.route.data.subscribe(data => {
             this.user = data['user'];
         })
-
+        this.route.queryParams.subscribe(params => {
+            const selectedTab = params['tab'];
+            this.memberTabs.tabs[selectedTab > 0 ? selectedTab : 0].active = true;
+        })
         //this.loadUser();
         console.log(this.user);
 
@@ -60,6 +65,20 @@ export class MemberDetailComponent implements OnInit {
                 console.log(user);
             },
             error => { this.alertify.error(error) });
+    }
+
+    selectTab(tabId: number) {
+        ////Passed 3 from the html because the tabset is having an array of tabs and messages comes on 4rth position.We also added memberTabs to the html tag.
+        this.memberTabs.tabs[tabId].active = true;
+    }
+
+    sendLike(id: number) {
+        console.log(id);
+        this.userService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data => {
+            this.alertify.success("You have liked: " + this.user.knownAs);
+        }, error => {
+            this.alertify.error(error);
+        })
     }
 
 }

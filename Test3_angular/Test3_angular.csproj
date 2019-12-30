@@ -26,22 +26,28 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\routes.ts" />
+    <None Remove="ClientApp\src\app\_models\Message.ts" />
     <None Remove="ClientApp\src\app\_models\pagination.ts" />
     <None Remove="ClientApp\src\app\_resolvers\lists.resolver.ts" />
     <None Remove="ClientApp\src\app\_resolvers\member-detail.resolver.ts" />
     <None Remove="ClientApp\src\app\_resolvers\member-edit.resolver.ts" />
     <None Remove="ClientApp\src\app\_resolvers\member-lists.resolver.ts" />
+    <None Remove="ClientApp\src\app\_resolvers\messages.resolver.ts" />
     <None Remove="ClientApp\src\app\_services\error.interceptor.ts" />
     <None Remove="ClientApp\src\typings.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\routes.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_models\Message.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_models\pagination.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_resolvers\member-edit.resolver.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\_resolvers\lists.resolver.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\_resolvers\messages.resolver.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\_resolvers\member-lists.resolver.ts">

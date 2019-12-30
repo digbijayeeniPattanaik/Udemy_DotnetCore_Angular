@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DatingApp.Migrations
 {
-    public partial class AddedLikeEntity : Migration
+    public partial class MessageEntityAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,25 +46,57 @@ namespace DatingApp.Migrations
             ////        table.PrimaryKey("PK_Values", x => x.Id);
             ////    });
 
+            ////migrationBuilder.CreateTable(
+            ////    name: "Likes",
+            ////    columns: table => new
+            ////    {
+            ////        LikerId = table.Column<int>(nullable: false),
+            ////        LikeeId = table.Column<int>(nullable: false)
+            ////    },
+            ////    constraints: table =>
+            ////    {
+            ////        table.PrimaryKey("PK_Likes", x => new { x.LikeeId, x.LikerId });
+            ////        table.ForeignKey(
+            ////            name: "FK_Likes_Users_LikeeId",
+            ////            column: x => x.LikeeId,
+            ////            principalTable: "Users",
+            ////            principalColumn: "Id",
+            ////            onDelete: ReferentialAction.Restrict);
+            ////        table.ForeignKey(
+            ////            name: "FK_Likes_Users_LikerId",
+            ////            column: x => x.LikerId,
+            ////            principalTable: "Users",
+            ////            principalColumn: "Id",
+            ////            onDelete: ReferentialAction.Restrict);
+            ////    });
+
             migrationBuilder.CreateTable(
-                name: "Likes",
+                name: "Message",
                 columns: table => new
                 {
-                    LikerId = table.Column<int>(nullable: false),
-                    LikeeId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    SenderId = table.Column<int>(nullable: false),
+                    RecipientId = table.Column<int>(nullable: false),
+                    Content = table.Column<string>(nullable: true),
+                    IsRead = table.Column<bool>(nullable: false),
+                    DateRead = table.Column<DateTime>(nullable: true),
+                    MessageSent = table.Column<DateTime>(nullable: false),
+                    SenderDeleted = table.Column<bool>(nullable: false),
+                    RecipientDeleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Likes", x => new { x.LikeeId, x.LikerId });
+                    table.PrimaryKey("PK_Message", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Likes_Users_LikeeId",
-                        column: x => x.LikeeId,
+                        name: "FK_Message_Users_RecipientId",
+                        column: x => x.RecipientId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Likes_Users_LikerId",
-                        column: x => x.LikerId,
+                        name: "FK_Message_Users_SenderId",
+                        column: x => x.SenderId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -94,10 +126,20 @@ namespace DatingApp.Migrations
             ////            onDelete: ReferentialAction.Cascade);
             ////    });
 
+            ////migrationBuilder.CreateIndex(
+            ////    name: "IX_Likes_LikerId",
+            ////    table: "Likes",
+            ////    column: "LikerId");
+
             migrationBuilder.CreateIndex(
-                name: "IX_Likes_LikerId",
-                table: "Likes",
-                column: "LikerId");
+                name: "IX_Message_RecipientId",
+                table: "Message",
+                column: "RecipientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Message_SenderId",
+                table: "Message",
+                column: "SenderId");
 
             ////migrationBuilder.CreateIndex(
             ////    name: "IX_Photos_UsersId",
@@ -107,8 +149,11 @@ namespace DatingApp.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            ////migrationBuilder.DropTable(
+            ////    name: "Likes");
+
             migrationBuilder.DropTable(
-                name: "Likes");
+                name: "Message");
 
             ////migrationBuilder.DropTable(
             ////    name: "Photos");

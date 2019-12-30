@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatingApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191228100130_AddedLikeEntity")]
-    partial class AddedLikeEntity
+    [Migration("20191229140501_MessageEntityAdded")]
+    partial class MessageEntityAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,37 @@ namespace DatingApp.Migrations
                     b.HasIndex("LikerId");
 
                     b.ToTable("Likes");
+                });
+
+            modelBuilder.Entity("DatingApp.Model.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime?>("DateRead");
+
+                    b.Property<bool>("IsRead");
+
+                    b.Property<DateTime>("MessageSent");
+
+                    b.Property<bool>("RecipientDeleted");
+
+                    b.Property<int>("RecipientId");
+
+                    b.Property<bool>("SenderDeleted");
+
+                    b.Property<int>("SenderId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipientId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Message");
                 });
 
             modelBuilder.Entity("DatingApp.Model.Photo", b =>
@@ -119,6 +150,19 @@ namespace DatingApp.Migrations
                     b.HasOne("DatingApp.Model.Users", "Liker")
                         .WithMany("Likees")
                         .HasForeignKey("LikerId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("DatingApp.Model.Message", b =>
+                {
+                    b.HasOne("DatingApp.Model.Users", "Recipient")
+                        .WithMany("MessageReceived")
+                        .HasForeignKey("RecipientId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("DatingApp.Model.Users", "Sender")
+                        .WithMany("MessageSent")
+                        .HasForeignKey("SenderId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

@@ -32,80 +32,111 @@ namespace DatingApp.Migrations
                     b.ToTable("Likes");
                 });
 
-            ////modelBuilder.Entity("DatingApp.Model.Photo", b =>
-            ////    {
-            ////        b.Property<int>("Id")
-            ////            .ValueGeneratedOnAdd()
-            ////            .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            modelBuilder.Entity("DatingApp.Model.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            ////        b.Property<DateTime>("DateAdded");
+                    b.Property<string>("Content");
 
-            ////        b.Property<string>("Description");
+                    b.Property<DateTime?>("DateRead");
 
-            ////        b.Property<bool>("IsMain");
+                    b.Property<bool>("IsRead");
 
-            ////        b.Property<string>("PublicId");
+                    b.Property<DateTime>("MessageSent");
 
-            ////        b.Property<string>("Url");
+                    b.Property<bool>("RecipientDeleted");
 
-            ////        b.Property<int>("UsersId");
+                    b.Property<int>("RecipientId");
 
-            ////        b.HasKey("Id");
+                    b.Property<bool>("SenderDeleted");
 
-            ////        b.HasIndex("UsersId");
+                    b.Property<int>("SenderId");
 
-            ////        b.ToTable("Photos");
-            ////    });
+                    b.HasKey("Id");
 
-            ////modelBuilder.Entity("DatingApp.Model.Users", b =>
-            ////    {
-            ////        b.Property<int>("Id")
-            ////            .ValueGeneratedOnAdd()
-            ////            .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.HasIndex("RecipientId");
 
-            ////        b.Property<string>("City");
+                    b.HasIndex("SenderId");
 
-            ////        b.Property<string>("Country");
+                    b.ToTable("Message");
+                });
 
-            ////        b.Property<DateTime>("Created");
+            modelBuilder.Entity("DatingApp.Model.Photo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            ////        b.Property<DateTime>("DateOfBirth");
+                    b.Property<DateTime>("DateAdded");
 
-            ////        b.Property<string>("Gender");
+                    b.Property<string>("Description");
 
-            ////        b.Property<string>("Interests");
+                    b.Property<bool>("IsMain");
 
-            ////        b.Property<string>("Introduction");
+                    b.Property<string>("PublicId");
 
-            ////        b.Property<string>("KnownAs");
+                    b.Property<string>("Url");
 
-            ////        b.Property<DateTime>("LastActive");
+                    b.Property<int>("UsersId");
 
-            ////        b.Property<string>("LookingFor");
+                    b.HasKey("Id");
 
-            ////        b.Property<byte[]>("PasswordHash");
+                    b.HasIndex("UsersId");
 
-            ////        b.Property<byte[]>("PasswordSalt");
+                    b.ToTable("Photos");
+                });
 
-            ////        b.Property<string>("UserName");
+            modelBuilder.Entity("DatingApp.Model.Users", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            ////        b.HasKey("Id");
+                    b.Property<string>("City");
 
-            ////        b.ToTable("Users");
-            ////    });
+                    b.Property<string>("Country");
 
-            ////modelBuilder.Entity("DatingApp.Model.Values", b =>
-            ////    {
-            ////        b.Property<int>("Id")
-            ////            .ValueGeneratedOnAdd()
-            ////            .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<DateTime>("Created");
 
-            ////        b.Property<string>("Name");
+                    b.Property<DateTime>("DateOfBirth");
 
-            ////        b.HasKey("Id");
+                    b.Property<string>("Gender");
 
-            ////        b.ToTable("Values");
-            ////    });
+                    b.Property<string>("Interests");
+
+                    b.Property<string>("Introduction");
+
+                    b.Property<string>("KnownAs");
+
+                    b.Property<DateTime>("LastActive");
+
+                    b.Property<string>("LookingFor");
+
+                    b.Property<byte[]>("PasswordHash");
+
+                    b.Property<byte[]>("PasswordSalt");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("DatingApp.Model.Values", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Values");
+                });
 
             modelBuilder.Entity("DatingApp.Model.Like", b =>
                 {
@@ -120,13 +151,26 @@ namespace DatingApp.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            ////modelBuilder.Entity("DatingApp.Model.Photo", b =>
-            ////    {
-            ////        b.HasOne("DatingApp.Model.Users", "Users")
-            ////            .WithMany("Photos")
-            ////            .HasForeignKey("UsersId")
-            ////            .OnDelete(DeleteBehavior.Cascade);
-            ////    });
+            modelBuilder.Entity("DatingApp.Model.Message", b =>
+                {
+                    b.HasOne("DatingApp.Model.Users", "Recipient")
+                        .WithMany("MessageReceived")
+                        .HasForeignKey("RecipientId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("DatingApp.Model.Users", "Sender")
+                        .WithMany("MessageSent")
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("DatingApp.Model.Photo", b =>
+                {
+                    b.HasOne("DatingApp.Model.Users", "Users")
+                        .WithMany("Photos")
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
 #pragma warning restore 612, 618
         }
     }
